@@ -35,23 +35,23 @@ namespace ProductMVCApp
             services.AddControllers();
 
             //
-            services.AddAuthentication(AzureADDefaults.AuthenticationScheme)
-                .AddAzureAD(options => Configuration.Bind("AzureAd", options));
+            //services.AddAuthentication(AzureADDefaults.AuthenticationScheme)
+            //    .AddAzureAD(options => Configuration.Bind("AzureAd", options));
 
-            services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme, options =>
-            {
-                options.Authority = options.Authority + "/v2.0/";
+            //services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme, options =>
+            //{
+            //    options.Authority = options.Authority + "/v2.0/";
 
-            });
+            //});
 
-            services.AddMvc(options =>
-            {
-                var policy = new AuthorizationPolicyBuilder()
-                    .RequireAuthenticatedUser()
-                    .Build();
-                options.Filters.Add(new AuthorizeFilter(policy));
-            })
-            .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+            //services.AddMvc(options =>
+            //{
+            //    var policy = new AuthorizationPolicyBuilder()
+            //        .RequireAuthenticatedUser()
+            //        .Build();
+            //    options.Filters.Add(new AuthorizeFilter(policy));
+            //})
+            //.SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
 
             //
             services.AddHttpClient();
@@ -86,8 +86,8 @@ namespace ProductMVCApp
             app.UseStaticFiles();
 
             app.UseRouting();
-            app.UseAuthentication();
-            app.UseAuthorization();
+           // app.UseAuthentication();
+           // app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
