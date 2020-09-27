@@ -65,9 +65,9 @@ namespace ProductMVCApp.Controllers
 
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri("https://demofunctest.azurewebsites.net/api/");
+                client.BaseAddress = new Uri("https://ourproductapi.azurewebsites.net/api/");
                 //HTTP GET
-                var responseTask = client.GetAsync("FunctiontogetProducts");
+                var responseTask = client.GetAsync("Products1");
                 responseTask.Wait();
 
                 var result = responseTask.Result;
@@ -102,10 +102,10 @@ namespace ProductMVCApp.Controllers
         {
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri("https://demofunctest.azurewebsites.net/api/FunctiontogetProducts");
+                client.BaseAddress = new Uri("https://ourproductapi.azurewebsites.net/api/");
 
                 //HTTP POST
-                var postTask = client.PostAsJsonAsync<Product>("FunctiontogetProducts", prod);
+                var postTask = client.PostAsJsonAsync<Product>("Products1", prod);
                 postTask.Wait();
 
                 var result = postTask.Result;
